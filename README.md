@@ -89,3 +89,35 @@ ROW_NUMBER() OVER(PARTITION BY Employee_Name,EmpID ORDER BY EmpID)row_num
 FROM Hr_data --based on the employee name and employee id there were no duplicates found
 ```
 
+### Exploratory Data Analysis
+1. General Employee Information
+   - How many employees have we employed?
+   - What is the gender distribution of employees?
+   - What are the different job roles and their counts based on gender?
+
+2. Salary and Compensation
+   - What is the average salary of employees per gender?
+   - What is the distribution(Avg,Max,Min Salary)and our total expenditure of salaries among different departments,highlight the number of employees in each department before termination and after 
+     termination?
+
+3. Employee/Department Performance
+   - How many employees have received a performance score of above or equal to 4 and which deparment has the highest number of employee with the perfomance score?
+   - What is the average performance score for each department?
+   - Identify the most common reasons for termination
+
+4. Employee Tenure and Turnover
+   - Calculate the total number of employees hired each year.
+   - What is the tenure by job of each employee Create a stored procedure for this ?
+   - What is the turnover rate by department?
+   - How many employees have left the company by department?
+
+5. Diversity and Inclusion
+   - What is the age distribution of employees who are still with us and there job ?
+   - What is the distribution of employees by ethnicity?
+   - How does diversity vary across different departments?
+
+
+#### General Employee Information
+
+
+
