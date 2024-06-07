@@ -64,3 +64,28 @@ UPDATE Hr_data
 SET EngagementSurvey = ROUND(EngagementSurvey,2)
 ```
 
+#### Removing unnecessary columns
+We are going to remove unnecessary columns that we are not going to use for our analysis.
+
+```sql
+ALTER TABLE Hr_data
+DROP COLUMN MarriedID,MaritalStatusID,GenderID,EmpstatusID,Termd,FromDiversityJobFairID
+```
+
+#### Removing nulls
+Removing nulls is essential in the data cleaning process that significantly impacts the quality, accuracy and reliability of data analysis.
+
+```sql
+SELECT *--Checking for nulls
+FROM Hr_data
+WHERE Employee_Name IS NULL AND EmpID IS NULL --No nulls were found except for the columns which allowed nulls
+```
+#### Removing Duplicates
+Removing duplicates is an important step in Data cleaning since it helps maintain the integrity, accuracy and reliability of a dataset.
+
+```sql
+select *,
+ROW_NUMBER() OVER(PARTITION BY Employee_Name,EmpID ORDER BY EmpID)row_num
+FROM Hr_data --based on the employee name and employee id there were no duplicates found
+```
+
