@@ -20,9 +20,11 @@ In this section we utilised SQL to perform our data preparation process, we perf
 
 
 ```sql
+/*
+Before we begin lets create a new table with the same dataset, this helps in having a back-up
+dataset incase we make a mistake in our data cleaning process
+*/
 
---Before we begin lets create a new table with the same dataset, this helps in 
---having a back-up dataset incase we make a mistake in our data cleaning process
 SELECT *
 INTO Hr_data
 FROM HRDataset_v14_Raw;
@@ -76,17 +78,22 @@ DROP COLUMN MarriedID,MaritalStatusID,GenderID,EmpstatusID,Termd,FromDiversityJo
 Removing nulls is essential in the data cleaning process that significantly impacts the quality, accuracy and reliability of data analysis.
 
 ```sql
-SELECT *--Checking for nulls
+SELECT *  --Checking for nulls
 FROM Hr_data
-WHERE Employee_Name IS NULL AND EmpID IS NULL --No nulls were found except for the columns which allowed nulls
+WHERE Employee_Name IS NULL AND EmpID IS NULL    --No nulls were found except for the columns which allowed nulls
 ```
 #### Removing Duplicates
 Removing duplicates is an important step in Data cleaning since it helps maintain the integrity, accuracy and reliability of a dataset.
 
 ```sql
+/*
+We are going to partition by the unique keys i.e Employee_Name,Emp_ID.
+If there is going to be any duplicates it will return a row number that is above 1
+*/
+
 select *,
 ROW_NUMBER() OVER(PARTITION BY Employee_Name,EmpID ORDER BY EmpID)row_num
-FROM Hr_data --based on the employee name and employee id there were no duplicates found
+FROM Hr_data 
 ```
 
 ### Exploratory Data Analysis
@@ -117,7 +124,27 @@ FROM Hr_data --based on the employee name and employee id there were no duplicat
    - How does diversity vary across different departments?
 
 
-#### General Employee Information
+### General Employee Information
+In this section, we will examine the general information of our employees to gain a deeper understanding of our workforce. This analysis encompasses a range of employee attributes, including demographics, job roles, and performance metrics. By studying these details, we aim to uncover insights that will inform our HR strategies, enhance employee satisfaction, and improve overall organizational performance.
+
+#### How many employees have we employed?
+```sql
+/*
+This Query is going to count all rows in the dataset/table and return them as the count of number of employees
+*/
+SELECT
+	COUNT(*) Total_Employees
+FROM Hr_data;
+
+```
+![Total Employees SQL](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/9026997b-de8a-47ac-b9c6-21997b867b48)
+
+### Findings
+We have a total number of 311 employees who we have employed over the years.
+
+#### What is the gender distribution of employees?
+
+
 
 
 
