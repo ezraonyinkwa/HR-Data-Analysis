@@ -139,10 +139,64 @@ FROM Hr_data;
 ```
 ![Total Employees SQL](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/9026997b-de8a-47ac-b9c6-21997b867b48)
 
-### Findings
+#### Findings
 We have a total number of 311 employees who we have employed over the years.
 
 #### What is the gender distribution of employees?
+```SQL
+/*
+The query is going to select the sex column of the employees, count all rows in the (as we have aliased it as total employees),
+it is going to return the total number of employees and where it found the sex being male it counts as one and vice versa thus return
+the number of both the female and male employees.
+*/ 
+SELECT 
+	Sex,
+	COUNT(*) AS Total_Employees
+FROM Hr_data
+GROUP BY Sex;
+```
+![Gender of employees SQL](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/eccca46a-7560-461e-b854-f625e7b4deb8)
+
+#### Findings
+
+From our analysis, it is evident that our workforce comprises a higher number of female employees, totaling 176, compared to 135 male employees. This gender distribution indicates a female-majority workforce.
+
+#### What are the different job roles and their counts based on gender?
+
+```sql
+SELECT  
+	Position,
+	Sex,
+	COUNT(*) AS Total_Employees
+FROM Hr_data
+GROUP BY Position,Sex
+ORDER BY Total_Employees DESC;
+
+```
+![Position of Employees sql](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/d5c82ece-af57-4bd9-95b9-ffdbb0d4facb)
+
+#### Findings
+From our analysis, it is evident that the job role most occupied by female employees is Production Technician I, with 83 female employees, while the same role is also the most occupied by male employees, with 54 male employees. Additionally, the top job roles are predominantly held by males, with 11 top positions occupied by male employees.The significant presence of both female and male employees in the Production Technician I role indicates that this position attracts a diverse pool of talent. However, there is a notable gender disparity in higher-ranking positions, with males occupying a majority of these roles.The dominance of males in top positions suggests a potential imbalance in career advancement opportunities. This highlights the need to ensure equal access to career development and leadership training for all employees, regardless of gender.   
+
+### Salary and Compensation
+```sql
+/*
+In this query we are going to select Average salaries in terms of gender and format the salary into USD currency
+*/
+
+SELECT
+	sex, 
+	FORMAT(AVG(salary),'c') as avg_salary
+FROM Hr_data
+GROUP BY Sex
+ORDER BY 2 DESC;
+```
+![Avg salary of Employees](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/7e29dff9-21d3-430e-82e7-4464cbf66902)
+
+#### Findings
+
+
+
 
 
 
