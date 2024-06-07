@@ -194,6 +194,49 @@ ORDER BY 2 DESC;
 ![Avg salary of Employees](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/7e29dff9-21d3-430e-82e7-4464cbf66902)
 
 #### Findings
+From the analysis, it is evident that our male employees receive a higher average salary of $70,629 compared to female employees, who have an average salary of $67,786. This indicates a gender pay disparity within our organization.The difference in average salaries between male and female employees highlights the presence of a gender pay gap. This disparity underscores the need to review our compensation policies to ensure they are equitable and fair.
+
+#### What is the distribution(Avg,Max,Min Salary)and our total expenditure of salaries among different departments,highlight the number of employees in each department before and after termination ?
+![Expenditure sql](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/c476f2e9-76d6-449e-95db-df1a6f6428ca)
+
+```sql
+/*
+We created a CTE which selects the avg,min,max salaries and sums up salaries as expenditure and formats the salaries into USD currency.
+i CREATED A CTE so I can be able to see the difference in salaries before termination and after termination how our expenditure and salaries varies 
+*/
+WITH CTE_Expenditure AS(
+SELECT
+	Department,
+	FORMAT(AVG(Salary),'c')Avg_Salary, 
+	FORMAT(MIN(Salary),'c') Min_Salary,
+	FORMAT(MAX(Salary),'c')Max_Salary,
+	FORMAT(SUM(Salary),'c')Expenditure,
+	COUNT(EmpID) AS Total_Employees
+FROM Hr_data
+GROUP BY Department
+),
+
+CTE_Expenditure_after_Termination AS (
+SELECT
+	Department,
+	FORMAT(AVG(Salary),'c')Avg_Salary, 
+	FORMAT(MIN(Salary),'c') Min_Salary,
+	FORMAT(MAX(Salary),'c')Max_Salary,
+	FORMAT(SUM(Salary),'c')Expenditure,
+	COUNT(EmpID) AS Employees_After_Termination
+FROM Hr_data
+WHERE Dateoftermination IS NULL
+GROUP BY Department
+)
+
+SELECT *
+FROM CTE_Expenditure CTE_E
+JOIN CTE_Expenditure_after_Termination CTE_Eat 
+ON CTE_E.Department=CTE_Eat.Department 
+ORDER BY 6 DESC;
+
+```
+#### Findings
 
 
 
