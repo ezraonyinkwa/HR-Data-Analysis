@@ -104,11 +104,12 @@ FROM Hr_data
 
 2. Salary and Compensation
    - What is the average salary of employees per gender?
-   - What is the distribution(Avg,Max,Min Salary)and our total expenditure of salaries among different departments,highlight the number of employees in each department before termination and after 
-     termination?
+   - What is the distribution(Avg,Max,Min Salary)and our total expenditure of salaries among different departments,highlight the number of employees in each 
+     department before and after termination ?
 
 3. Employee/Department Performance
-   - How many employees have received a performance score of above or equal to 4 and which deparment has the highest number of employee with the perfomance score?
+   - How many employees have received a performance score of above or equal to 4 and which deparment has the highest number of employee with the perfomance 
+score?
    - What is the average performance score for each department?
    - Identify the most common reasons for termination
 
@@ -202,7 +203,7 @@ From the analysis, it is evident that our male employees receive a higher averag
 ```sql
 /*
 We created a CTE which selects the avg,min,max salaries and sums up salaries as expenditure and formats the salaries into USD currency.
-i CREATED A CTE so I can be able to see the difference in salaries before termination and after termination how our expenditure and salaries varies 
+I created a CTE so I can be able to see the difference in salaries before termination and after termination how our expenditure and salaries varies 
 */
 WITH CTE_Expenditure AS(
 SELECT
@@ -237,7 +238,10 @@ ORDER BY 6 DESC;
 
 ```
 #### Findings
-From the analysis the Executive Officer receives the highest amount of salary of $250,000. The lowest salary amount is from the department of Production with a total Salary of $45,046 and the department with the highest total  salary expenditure before termination was Production with a total  $12,530,291, the high salary expenditure 
+The Production department has the lowest average salary, with employees earning an average of $59,953. This indicates that roles within this department are compensated at a lower rate compared to other departments.The lowest individual salary is also found in the Production department, at $45,046. This further emphasizes the lower compensation levels within this department.The Executive Officer department has the highest average salary, with an average compensation of $250,000. This significant difference highlights the disparity in salary levels between executive roles and other departments.Despite having the lowest average salary, the Production department has the highest total salary expenditure before termination, amounting to $12,530,291. This is attributable to the high number of employees within the department, leading to a larger overall payroll expenditure.
+After termination of employees the departmnt with the highest Saary expenditure was Production with a total salary amount of $7,612,827.he high salary expenditure in the Production department, driven by its large workforce, suggests that it plays a crucial role in the organization’s operations. 
+
+#### 
 
 
 
