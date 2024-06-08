@@ -357,8 +357,12 @@ CREATE PROCEDURE Tenure AS (
 	 
 	 EXEC Tenure;
 
-/* After accounting for full years and full months,it is going to determine the remaining days between the dates.The Tenure_days will return a negative number/day , where the negative days signified the number of remaining days for full month and year*/
+/* After accounting for full years and full months,it is going to determine the remaining days between the dates.
+The Tenure_days will return a negative number/day , where the negative days signified the number of remaining days for full month and year*/
 ```
+![Tenure sql2](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/1175b6cf-fa60-4d4d-8c38-13f24fcd50a3)
+
+#### Findings
 
 
 
