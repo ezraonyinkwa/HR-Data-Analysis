@@ -237,7 +237,7 @@ ORDER BY 6 DESC;
 
 ```
 #### Findings
-
+From the analysis the Executive Officer receives the highest amount of salary of $250,000. The lowest salary amount is from the department of Production with a total Salary of $45,046 and the department with the highest total  salary expenditure before termination was Production with a total  $12,530,291, the high salary expenditure 
 
 
 
