@@ -241,7 +241,28 @@ ORDER BY 6 DESC;
 The Production department has the lowest average salary, with employees earning an average of $59,953. This indicates that roles within this department are compensated at a lower rate compared to other departments.The lowest individual salary is also found in the Production department, at $45,046. This further emphasizes the lower compensation levels within this department.The Executive Officer department has the highest average salary, with an average compensation of $250,000. This significant difference highlights the disparity in salary levels between executive roles and other departments.Despite having the lowest average salary, the Production department has the highest total salary expenditure before termination, amounting to $12,530,291. This is attributable to the high number of employees within the department, leading to a larger overall payroll expenditure.
 After termination of employees the departmnt with the highest Saary expenditure was Production with a total salary amount of $7,612,827.he high salary expenditure in the Production department, driven by its large workforce, suggests that it plays a crucial role in the organization’s operations. 
 
-#### 
+### Employee/Department Performance
+In this section we are going to look at employees perfomance by ratings and also the perfomance of departments
+
+####  How many employees have received a performance score of above or equal to 4 and which deparment has the highest number of employee with the perfomance 
+score?
+
+```sql
+SELECT 
+	Department,
+	COUNT(EmpID) Employees
+FROM Hr_data
+WHERE PerfScoreID >=4
+GROUP BY Department
+ORDER BY 2 DESC;
+```
+![employee perfomance sql](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/8b623927-a2aa-4f78-859b-310d14b53d1d)
+#### Findings
+The Production department has the highest number of employees who received a performance rating above 4, with a total of 27 employees. This indicates a strong performance culture within the Production department, highlighting the effectiveness of the team and potentially strong leadership and management practices in this area.The IT/IS department follows with 6 employees receiving a rating above 4. This suggests a solid performance in the IT/IS department, though on a smaller scale compared to the Production department.
+ The Sales and Software Engineering departments have the lowest number of employees with a performance rating above 4, each with only 2 employees. This may indicate areas where performance improvement initiatives could be beneficial.
+
+
+
 
 
 
