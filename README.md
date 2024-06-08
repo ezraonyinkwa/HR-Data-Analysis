@@ -115,6 +115,7 @@ score?
 
 4. Employee Tenure and Turnover
    - Calculate the total number of employees hired each year.
+   - Find employees who have been with the company for more than 5 years
    - What is the tenure by job of each employee Create a stored procedure for this ?
    - What is the turnover rate by department?
    - How many employees have left the company by department?
@@ -260,6 +261,106 @@ ORDER BY 2 DESC;
 #### Findings
 The Production department has the highest number of employees who received a performance rating above 4, with a total of 27 employees. This indicates a strong performance culture within the Production department, highlighting the effectiveness of the team and potentially strong leadership and management practices in this area.The IT/IS department follows with 6 employees receiving a rating above 4. This suggests a solid performance in the IT/IS department, though on a smaller scale compared to the Production department.
  The Sales and Software Engineering departments have the lowest number of employees with a performance rating above 4, each with only 2 employees. This may indicate areas where performance improvement initiatives could be beneficial.
+
+#### What is the average performance score for each department ?
+```SQL
+SELECT 
+	Department,
+	AVG(PerfScoreID)Avg_Score
+FROM Hr_data
+GROUP BY Department
+ORDER BY 2 DESC;
+```
+![Overall perfomance  SQL](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/c598496d-bde7-49c8-8e1f-ca3495633535)
+
+#### Findings
+The Admin Office ranks first with the highest average performance score of 3. This suggests that employees in the Admin Office consistently perform at a higher level, indicating effective management, strong work ethic, and a productive work environment.Both the Executive Office and IT/IS departments also have an average performance score of 3, demonstrating solid performance within these departments. This reflects well on the leadership and technical proficiency in these areas.The Production and Sales departments recorded the lowest average performance scores, each with an average score of 2. This indicates potential challenges in these departments that may be affecting overall performance levels.
+
+#### Identify the most common reasons for termination
+
+```sql
+SELECT 
+	TermReason,
+	count(*) Employees
+FROM Hr_data
+WHERE TermReason <> 'N/A-StillEmployed'
+GROUP BY TermReason
+ORDER BY 2 DESC;
+
+```
+![Employee TERMINATION REASON SQL](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/ef727064-ef13-4606-8356-8388d7cdd5ae)
+
+#### Findings
+The most common reason for employee termination is moving to another position, with a total of 20 employees leaving for this reason. This suggests that employees are finding better opportunities elsewhere, indicating a potential issue with job satisfaction, career growth, or competitive compensation within the organization.The second most common reason for termination is employee unhappiness, accounting for 14 employees. This highlights dissatisfaction with certain aspects of their job, which could be related to work environment, management practices, or job role expectations.The least common reason for termination is gross misconduct, with only 1 employee terminated for this reason. This indicates that severe disciplinary issues are rare within the organization, reflecting positively on overall employee behavior and adherence to company policies.
+
+### Employee Tenure and Turnover
+Understanding employee tenure and turnover is crucial for any organization aiming to optimize its workforce management and improve overall productivity.
+
+#### Calculate the total number of employees hired each year.
+```sql
+SELECT 
+	YEAR(DateofHire)HireYear,
+	count(*)Employees_Hired
+FROM Hr_data
+GROUP BY YEAR(DateofHire)
+ORDER BY 2 DESC;
+```
+![Employees Hired sql](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/245a6b69-f4e2-4cb1-9211-be81442711d1)
+
+#### Findings
+The year with the highest number of hires was 2011, during which 83 employees were recruited. This peak in hiring may indicate a period of expansion, significant projects, or increased demand for workforce resources within the organization. Understanding the factors contributing to this surge can provide insights into successful recruitment strategies or organizational growth phases.The year 2014 saw the second-highest number of hires, with 60 employees joining the organization. This suggests another period of considerable growth or the launch of new initiatives requiring additional human resources.Both 2006 and 2018 recorded the lowest number of hires, with only 1 employee recruited each year. These years of minimal hiring may reflect economic downturns, hiring freezes, or a stable workforce with low turnover, indicating a period of organizational stability or strategic adjustments in recruitment policies.
+
+#### What is the tenure by job of each employee Create a stored procedure for this ?
+
+```sql
+/*
+The below query will calculate the difference between the date of termination and date of hire, if there is no termination date (did not get terminated)
+It will get the current date /(year) and get the diference  with the date of hire. 
+*/
+ SELECT
+		Employee_Name,
+		DATEDIFF(YEAR,DateofHire,
+		ISNULL(DateofTermination,GETDATE())) Tenure_years
+FROM Hr_data
+WHERE DATEDIFF(YEAR,DateofHire,
+		ISNULL(DateofTermination,GETDATE())) >5
+ORDER BY 2 DESC;
+```
+![Employee Tenure sql](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/be58b6e4-2c64-4bdd-8f75-956473f7718f)
+
+#### Findings
+orrence Jack stands out as the longest-serving employee, having dedicated 18 years to the organization. This long tenure reflects a high level of commitment and satisfaction, likely indicating positive aspects of the work environment, career growth opportunities, and alignment with organizational values.Following closely, Pitt Brad has served for 17 years, further emphasizing a trend of long-term employee retention within the organization. Such extended tenures suggest the presence of effective retention strategies, a supportive work culture, and meaningful career development pathways.At the other end of the spectrum, the shortest-serving employees have a tenure of 6 years, with six employees falling into this category. While 6 years is still a substantial period, understanding why these employees did not stay longer could provide insights into potential areas for improvement in retention strategies or work environment factors that may influence employee decisions to leave after this period.The presence of employees with long tenures, such as Torrence Jack and Pitt Brad, indicates that the organization has successfully fostered an environment where employees feel valued and motivated to stay long-term.
+
+#### What is the tenure by job of each employee Create a stored procedure for this ?
+
+```sql
+CREATE PROCEDURE Tenure AS (
+ SELECT
+		Employee_Name,
+		Position,
+		DateofHire,
+		DateofTermination,
+		DATEDIFF(YEAR,DateofHire,
+		ISNULL(DateofTermination,GETDATE())) Tenure_years,
+
+		DATEDIFF(MONTH,DateofHire,
+		ISNULL(DateofTermination,GETDATE())) % 12 Tenure_Month,  /*Calculates the difference in months between the hire date and the termination 
+		date or current date and takes the remainder when divided by 12 to get the number of months after accounting for full years. */
+
+		DATEDIFF(DAY,DATEADD(MONTH,DATEDIFF(MONTH,DateofHire,
+		ISNULL(DateofTermination,GETDATE())),DateofHire),ISNULL(DateofTermination,GETDATE())) Tenure_Days
+		 /*Calculates the number of days after accounting for full years and full months*/
+		
+
+		FROM Hr_data
+	)
+	 
+	 EXEC Tenure;
+
+/* After accounting for full years and full months,it is going to determine the remaining days between the dates.The Tenure_days will return a negative number/day , where the negative days signified the number of remaining days for full month and year*/
+```
+
+
 
 
 
