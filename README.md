@@ -4,30 +4,44 @@
 2. [Data Sources](#data-sources)
 3. [Tools](#tools)
 4. [Data cleaning/Preparation](#data-cleaningpreparation)
-5. [Renaming Columns](#renaming-columns)
-6. [Standardizing Data](#standardizing-data)
-7. [Removing unnecessary columns](#removing-unnecessary-columns)
-8. [Removing nulls](#removing-nulls)
-9. [Removing Duplicates](#removing-duplicates)
-10. [Exploratory Data Analysis](#exploratory-data-analysis)
-11. [General Employee Information](#general-employee-information)
+  - [Renaming Columns](#renaming-columns)
+  - [Standardizing Data](#standardizing-data)
+  - [Removing unnecessary columns](#removing-unnecessary-columns)
+  - [Removing nulls](#removing-nulls)
+  - [Removing Duplicates](#removing-duplicates)
+ 
+ 
+5. [Exploratory Data Analysis](#exploratory-data-analysis)
+6. [General Employee Information](#general-employee-information)
     
     - [ How many employees have we employed?](#how-many-employees-have-we-employed)
     - [What is the gender distribution of employees?](#what-is-the-gender-distribution-of-employees-)
     - [What are the different job roles and their counts based on gender?](#what-are-the-different-job-roles-and-their-counts-based-on-gender)
     - [Which recruitment source do we hire the most employees from ?](#which-recruitment-source-do-we-hire-the-most-employees-from-)
       
-12. [Salary and Compensation](#salary-and-Compensation)
+7. [ Salary and Compensation](#salary-and-compensation)
 
     - [ What is the average salary of employees per gender?](#what-is-the-average-salary-of-employees-per-gender)
       
     - [What is the distribution(Avg,Max,Min Salary)and our total expenditure of salaries among different departments,highlight the number of employees in each department before and after termination ?](#what-is-the-distributionavgmaxmin-salaryand-our-total-expenditure-of-salaries-among-different-departmentshighlight-the-number-of-employees-in-each-department-before-and-after-termination-)
 
-13. [Employee/Department Performance](#employeedepartment-performance)
+8. [Employee/Department Performance](#employeedepartment-performance)
     -  [How many employees have received a performance score of above or equal to 4 and which deparment has the highest number of employee with the perfomance 
 score?](#how-many-employees-have-received-a-performance-score-of-above-or-equal-to-4-and-which-deparment-has-the-highest-number-of-employee-with-the-perfomance)
     - [What is the average performance score for each department ?](#what-is-the-average-performance-score-for-each-department-)
     - [Identify the most common reasons for termination](#identify-the-most-common-reasons-for-termination)
+      
+9. [Employee Tenure and Turnover](-employee-tenure-and-turnover)
+    - [Calculate the total number of employees hired each year.](#calculate-the-total-number-of-employees-hired-each-year)
+    - [Find employees who have been with the company for more than 5 years](#find-employees-who-have-been-with-the-company-for-more-than-5-years)
+    - [What is the tenure by job of each employee Create a stored procedure for this ?](#what-is-the-tenure-by-job-of-each-employee-create-a-stored-procedure-for-this-)
+    - [What is the turnover rate by department?](#what-is-the-turnover-rate-by-department)
+    - [How many employees have left the company by department?](#how-many-employees-have-left-the-company-by-department)
+
+10. [Diversity and Inclusion](#diversity-and-inclusion)
+    - [ What is the age distribution of employees who are still with us and there job ?](#what-is-the-age-distribution-of-employees-who-are-still-with-us-and-there-job-)
+    - [ What is the distribution of employees by ethnicity?](#what-is-the-distribution-of-employees-by-ethnicity-)
+    - [How does diversity vary across different departments?](#how-does-diversity-vary-across-different-departments)
 
 
 ## Project Overview
@@ -363,7 +377,7 @@ ORDER BY 2 DESC;
 #### Findings
 The year with the highest number of hires was 2011, during which 83 employees were recruited. This peak in hiring may indicate a period of expansion, significant projects, or increased demand for workforce resources within the organization. Understanding the factors contributing to this surge can provide insights into successful recruitment strategies or organizational growth phases.The year 2014 saw the second-highest number of hires, with 60 employees joining the organization. This suggests another period of considerable growth or the launch of new initiatives requiring additional human resources.Both 2006 and 2018 recorded the lowest number of hires, with only 1 employee recruited each year. These years of minimal hiring may reflect economic downturns, hiring freezes, or a stable workforce with low turnover, indicating a period of organizational stability or strategic adjustments in recruitment policies.
 
-#### What is the tenure by job of each employee Create a stored procedure for this ?
+#### Find employees who have been with the company for more than 5 years
 
 ```sql
 /*
