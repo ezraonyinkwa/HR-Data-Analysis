@@ -358,11 +358,14 @@ CREATE PROCEDURE Tenure AS (
 	 EXEC Tenure;
 
 /* After accounting for full years and full months,it is going to determine the remaining days between the dates.
-The Tenure_days will return a negative number/day , where the negative days signified the number of remaining days for full month and year*/
+The Tenure_days will return a negative number/day , where the negative days signifies the number of remaining
+days for full month
+To solve the negative days you take the days of previous month minus the remaining days to achieve full month or you can just pick only the years and months */
 ```
 ![Tenure sql2](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/1175b6cf-fa60-4d4d-8c38-13f24fcd50a3)
 
 #### Findings
+From the analysis the highest serving tenure was Brown Mia who worked for 16 years 8 months and 12 days as  an accountant 1.Brown Mia's long tenure as an Accountant 1 indicates a stable and potentially satisfied employee in this role. This tenure could reflect positively on the company’s retention strategies for accounting positions.Alagbe Trina has also worked for 16 years 5 months and 2 days as a Production Technician 1 , this highlights significant experience and likely high proficiency in production processes. This long service duration suggests a strong alignment with job role and work environment.The employee who had the lowest tenure was Goble Taisha who worked for 30 days as a Database Administrator.Taisha’s very short tenure of 30 days as a Database Administrator points to potential issues such as mismatch in job expectations, inadequate onboarding, or personal reasons.
 
 
 
