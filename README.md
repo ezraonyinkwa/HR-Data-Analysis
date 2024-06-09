@@ -1,4 +1,7 @@
 # HR Data Analysis
+## Table of Contents
+- [Project Overview](project-overview)
+- [Data Sources](data-source)
 
 ## Project Overview
 
@@ -101,6 +104,7 @@ FROM Hr_data
    - How many employees have we employed?
    - What is the gender distribution of employees?
    - What are the different job roles and their counts based on gender?
+   - Which recruitment source do we hire the most employees from ?
 
 2. Salary and Compensation
    - What is the average salary of employees per gender?
@@ -178,7 +182,25 @@ ORDER BY Total_Employees DESC;
 ![Position of Employees sql](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/d5c82ece-af57-4bd9-95b9-ffdbb0d4facb)
 
 #### Findings
-From our analysis, it is evident that the job role most occupied by female employees is Production Technician I, with 83 female employees, while the same role is also the most occupied by male employees, with 54 male employees. Additionally, the top job roles are predominantly held by males, with 11 top positions occupied by male employees.The significant presence of both female and male employees in the Production Technician I role indicates that this position attracts a diverse pool of talent. However, there is a notable gender disparity in higher-ranking positions, with males occupying a majority of these roles.The dominance of males in top positions suggests a potential imbalance in career advancement opportunities. This highlights the need to ensure equal access to career development and leadership training for all employees, regardless of gender.   
+From our analysis, it is evident that the job role most occupied by female employees is Production Technician I, with 83 female employees, while the same role is also the most occupied by male employees, with 54 male employees. Additionally, the top job roles are predominantly held by males, with 11 top positions occupied by male employees.The significant presence of both female and male employees in the Production Technician I role indicates that this position attracts a diverse pool of talent. However, there is a notable gender disparity in higher-ranking positions, with males occupying a majority of these roles.The dominance of males in top positions suggests a potential imbalance in career advancement opportunities. This highlights the need to ensure equal access to career development and leadership training for all employees, regardless of gender.  
+
+#### Which recruitment source do we hire the most employees from ?
+```sql
+SELECT 
+	RecruitmentSource,
+	count (*) Employees
+	FROM Hr_data
+	GROUP BY RecruitmentSource
+	ORDER BY 2 DESC;
+```
+![Recruitment source](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/2dc9b9ae-fea9-466a-a318-a7a9556d5928)
+#### Findings
+The fact that Indeed has been the most successful recruitment source, providing 87 employees, indicates its effectiveness in attracting candidates. This could be due to its wide reach, user-friendly interface, and the large number of job seekers who use it.
+LinkedIn has also proven to be a valuable recruitment source, contributing 76 employees. This platform is particularly beneficial for professional and specialized roles, as it allows for networking and direct engagement with potential candidates.
+The on-line web application method has only yielded one employee, suggesting that this recruitment channel is not currently effective. This may be due to lack of visibility, user experience issues, or insufficient promotion of job openings through this medium.
+
+
+
 
 ### Salary and Compensation
 ```sql
@@ -461,6 +483,25 @@ ORDER BY 3 DESC;
 ![Ethnicity by department](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/a0c096ce-e36f-40e7-b30d-748531ceb62e)
 
 #### Findings
-The whites being the ethnic of most of our employees ,the analysis shows that most of the whites are in the department of production with a total number of 134 employees followed by Black or African American with a total number of 45 employees who are in the department of Production.The Hispanic ben the lowest ethnic group among our employees, we see that they are also from the department of Production.
+The data reveals a significant concentration of White employees in the Production department with 134 employees. This suggests that the department heavily relies on this demographic, which may reflect broader hiring trends or availability of talent in the region.
+Black or African American employees represent the second-largest ethnic group with 45 employees who work within the Production department. 
+The Hispanic ethnicity , being the lowest represented group overall with only one employee, is also minimally present in the Production department. 
+
+### Recommendations
+ - Implement targeted recruitment campaigns to attract a broader range of ethnicities . Collaborate with community organizations and educational institutions 
+   to reach a more diverse talent pool.Foster an inclusive culture by promoting diversity awareness and cultural competence among all employees. Regular 
+   training sessions, workshops, and open forums can help build an environment where all employees feel valued and included.
+ - Instituting regular performance reviews and feedback sessions can help identify and address performance issues promptly. This approach ensures that employees receive the necessary guidance and support to improve their performance.Encouraging a culture of continuous improvement by setting clear performance expectations, providing ongoing training, and recognizing achievements can help maintain high performance levels across all departments.
+ - Creating an inclusive workplace culture that supports and encourages the career progression of female employees is essential. This includes fostering an environment where female employees feel empowered to pursue higher-level positions and are provided with the necessary resources to succeed.
+ - Implementing transparent salary practices can help in mitigating gender pay disparities. Clear communication about how salaries are determined and providing equal opportunities for salary negotiations can contribute to more equitable compensation.Conducting a comprehensive review of our compensation structures is crucial. This should include analyzing factors such as job roles, experience, qualifications, and performance to identify and address any unjustified pay discrepancies.
+ - Conduct exit interviews to understand the reasons behind high termination rates, particularly in departments like Production. Use this data to implement targeted retention strategies, such as improving working conditions, offering competitive compensation, and providing clear career advancement paths.Apply best practices from departments with low termination rates (e.g., Executive Officer) to other departments. This might include leadership development programs, enhanced communication channels, and employee engagement initiatives.
+
+## Reference
+[W3schools](https://www.w3schools.com/sql/)
+[Google](https://www.google.com/search?q=sql+query+that+finds+the+difference+in+years+from+two+dates&rlz=1C1CHBD_enKE1097KE1097&oq=sql+query+that+finds+the+difference+in+years++from+two+dates&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIKCAEQABiiBBiJBTIKCAIQABiABBiiBDIKCAMQABiiBBiJBTIKCAQQABiABBiiBNIBCTI2NjgwajBqN6gCCLACAQ&sourceid=chrome&ie=UTF-8)
+
+
+  
+
 
 
