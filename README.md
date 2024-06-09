@@ -42,7 +42,8 @@ score?](#how-many-employees-have-received-a-performance-score-of-above-or-equal-
     - [ What is the age distribution of employees who are still with us and there job ?](#what-is-the-age-distribution-of-employees-who-are-still-with-us-and-there-job-)
     - [ What is the distribution of employees by ethnicity?](#what-is-the-distribution-of-employees-by-ethnicity-)
     - [How does diversity vary across different departments?](#how-does-diversity-vary-across-different-departments)
-
+11. [Recommendations](#recommendations)
+12. [Reference](#reference)
 
 ## Project Overview
 
