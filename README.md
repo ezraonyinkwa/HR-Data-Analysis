@@ -329,7 +329,7 @@ ORDER BY 2 DESC;
 ![Employee Tenure sql](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/be58b6e4-2c64-4bdd-8f75-956473f7718f)
 
 #### Findings
-orrence Jack stands out as the longest-serving employee, having dedicated 18 years to the organization. This long tenure reflects a high level of commitment and satisfaction, likely indicating positive aspects of the work environment, career growth opportunities, and alignment with organizational values.Following closely, Pitt Brad has served for 17 years, further emphasizing a trend of long-term employee retention within the organization. Such extended tenures suggest the presence of effective retention strategies, a supportive work culture, and meaningful career development pathways.At the other end of the spectrum, the shortest-serving employees have a tenure of 6 years, with six employees falling into this category. While 6 years is still a substantial period, understanding why these employees did not stay longer could provide insights into potential areas for improvement in retention strategies or work environment factors that may influence employee decisions to leave after this period.The presence of employees with long tenures, such as Torrence Jack and Pitt Brad, indicates that the organization has successfully fostered an environment where employees feel valued and motivated to stay long-term.
+There are a total of 223 employees who served more tan 5 years ,Torrence Jack stands out as the longest-serving employee, having dedicated 18 years to the organization. This long tenure reflects a high level of commitment and satisfaction, likely indicating positive aspects of the work environment, career growth opportunities, and alignment with organizational values.Following closely, Pitt Brad has served for 17 years, further emphasizing a trend of long-term employee retention within the organization. Such extended tenures suggest the presence of effective retention strategies, a supportive work culture, and meaningful career development pathways.At the other end of the spectrum, the shortest-serving employees have a tenure of 6 years, with six employees falling into this category. While 6 years is still a substantial period, understanding why these employees did not stay longer could provide insights into potential areas for improvement in retention strategies or work environment factors that may influence employee decisions to leave after this period.The presence of employees with long tenures, such as Torrence Jack and Pitt Brad, indicates that the organization has successfully fostered an environment where employees feel valued and motivated to stay long-term.
 
 #### What is the tenure by job of each employee Create a stored procedure for this ?
 
@@ -357,20 +357,57 @@ CREATE PROCEDURE Tenure AS (
 	 
 	 EXEC Tenure;
 
-/* After accounting for full years and full months,it is going to determine the remaining days between the dates.
+/*
+After accounting for full years and full months,the query is going to determine the remaining days between the dates.
 The Tenure_days will return a negative number/day , where the negative days signifies the number of remaining
 days for full month
-To solve the negative days you take the days of previous month minus the remaining days to achieve full month or you can just pick only the years and months */
+ */
 ```
 ![Tenure sql2](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/1175b6cf-fa60-4d4d-8c38-13f24fcd50a3)
 
 #### Findings
 From the analysis the highest serving tenure was Brown Mia who worked for 16 years 8 months and 12 days as  an accountant 1.Brown Mia's long tenure as an Accountant 1 indicates a stable and potentially satisfied employee in this role. This tenure could reflect positively on the company’s retention strategies for accounting positions.Alagbe Trina has also worked for 16 years 5 months and 2 days as a Production Technician 1 , this highlights significant experience and likely high proficiency in production processes. This long service duration suggests a strong alignment with job role and work environment.The employee who had the lowest tenure was Goble Taisha who worked for 30 days as a Database Administrator.Taisha’s very short tenure of 30 days as a Database Administrator points to potential issues such as mismatch in job expectations, inadequate onboarding, or personal reasons.
 
+#### What is the turnover rate by department?
+```sql
+SELECT 
+		Department,
+		COUNT(*) Eployees_ID,
+		(SUM (CASE WHEN DateofTermination IS NOT NULL THEN 1 ELSE 0 END )*1.0/COUNT(*))* 100 Turn_Over_Rate
+	FROM Hr_data
+	GROUP BY Department;
+/*
+The above query is going to Calculate the total number of people terminated divided by
+the total employees
+*/
+```
+
+![Turnover rate by dep sql](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/9f81fdc2-812b-4af7-8212-55ffa9d35f20)
+
+#### Findings
+The high turnover rate in the Production department of 39.71% suggests potential issues such as job dissatisfaction, challenging work conditions, or inadequate compensation. This department may benefit from a detailed analysis to identify specific factors contributing to high turnover and implement targeted strategies to improve employee retention. This could include better working conditions, enhanced training programs, and competitive compensation packages.
+The Software Engineering department also experiences a high turnover rate of 36.36%, which could be due to factors such as high demand for software engineers in the job market, stress, or lack of career advancement opportunities. Addressing these issues could involve offering professional development opportunities, ensuring competitive salaries, and creating a supportive work environment to retain talent.
+The Executive Officer department's zero turnover rate indicates high job satisfaction, strong job security or effective leadership retention strategies. This stability can be leveraged to understand best practices and policies that might be replicated in other departments to reduce turnover. It could also reflect the strategic importance and careful selection process for these roles, ensuring a good fit and high job satisfaction.
 
 
+#### How many employees have left the company by department?
 
+```sql
+SELECT 
+	Department,
+	 COUNT(*)AS Employees
+FROM Hr_data
+WHERE DateofTermination IS NOT NULL
+GROUP BY Department
+ORDER BY 2 desc;
+/*
+The query is going to count all employees but it will filter and return only employees who were terminated
+*/
+```
+![Employees Terminated sql](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/cf0d99f7-384c-4a2d-aacf-3a6de0c14498)
 
+#### Findings
+The high number of terminations in the Production department with 83 employees suggests underlying issues such as job dissatisfaction, high job demands or inadequate working conditions. This trend indicates a need for a detailed review of the department's work environment, management practices and employee engagement strategies.The IT/IS department also shows a notable number of terminations with a total of 10 employees. This could be attributed to factors such as rapid technological changes, high stress levels, or better opportunities elsewhere.The low number of terminations in the Admin Offices with 2 employees terminated suggests a stable and potentially well-managed work environment. This stability may be due to effective leadership, job satisfaction or strong employee engagement initiatives.
 
 
 
