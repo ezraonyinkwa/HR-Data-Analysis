@@ -409,9 +409,58 @@ The query is going to count all employees but it will filter and return only emp
 #### Findings
 The high number of terminations in the Production department with 83 employees suggests underlying issues such as job dissatisfaction, high job demands or inadequate working conditions. This trend indicates a need for a detailed review of the department's work environment, management practices and employee engagement strategies.The IT/IS department also shows a notable number of terminations with a total of 10 employees. This could be attributed to factors such as rapid technological changes, high stress levels, or better opportunities elsewhere.The low number of terminations in the Admin Offices with 2 employees terminated suggests a stable and potentially well-managed work environment. This stability may be due to effective leadership, job satisfaction or strong employee engagement initiatives.
 
+### Diversity and Inclusion
+In this section we are going to look at the diversity and inclusion,Diversity and inclusion are critical components of a progressive and dynamic workforce, contributing significantly to the overall success and sustainability of an organization.
 
+#### What is the age distribution of employees who are still with us and there job ?
+```sql
+SELECT 
+	Employee_Name,
+	Position,
+	DATEDIFF(YEAR,DOB,GETDATE()) Age
+FROM Hr_data
+WHERE DateofTermination is null
+ORDER BY 3 DESC;
+/*
+This query helps in calculating the age of our employees where its going to find the difference
+between the year born subtracted from the current year in order to get there current age
+*/  
+```
+![Employee Age](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/e3c6a0ad-9030-40c8-b35d-23bb6e7ab861)
 
+#### Findings
+As the oldest employee, Chace Beatrice of age 73 years,her extensive experience likely brings valuable skills and knowledge to the Production department. Her longevity in the role suggests a high level of job satisfaction and commitment, which can serve as an example for other employees.Daniel Ann the secod oldest employee with 72 years,her role as a Sr. Network Engineer indicates a high level of expertise in a critical and technical position.
+As the youngest employee (32 years), Monkfish Erasmus represents the newer generation of the workforce. His role as a Production Technician II suggests that younger employees are actively contributing to core production activities.
 
+#### What is the distribution of employees by ethnicity ?
 
+```sql
+SELECT 
+	Race,
+	COUNT(*)Employees
+FROM Hr_data
+GROUP BY Race
+ORDER BY 2 DESC;
+```
+![Employee ethinicity sql](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/f9a5c8ea-e93e-47d9-aca0-91bf86dbf40f)
+
+#### Findings
+ The majority of the workforce is White with a total of 187 employees, which indicates a lack of ethnic diversity within the organization. .Black or African American employees form the second-largest ethnic group within the organization with a total of 80 employees. The Hispanic ethnicity is significantly underrepresented, with only one employee in this category. This underrepresentation signals a need for targeted recruitment and retention strategies to attract and support Hispanic employees.
+
+#### How does diversity vary across different departments?
+```sql
+SELECT 
+	Department,
+	Race,
+	COUNT(*)Employees
+FROM Hr_data
+GROUP BY Department,Race
+ORDER BY 3 DESC;
+
+```
+![Ethnicity by department](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/a0c096ce-e36f-40e7-b30d-748531ceb62e)
+
+#### Findings
+The whites being the ethnic of most of our employees ,the analysis shows that most of the whites are in the department of production with a total number of 134 employees followed by Black or African American with a total number of 45 employees who are in the department of Production.The Hispanic ben the lowest ethnic group among our employees, we see that they are also from the department of Production.
 
 
