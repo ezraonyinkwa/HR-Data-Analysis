@@ -1,7 +1,34 @@
 # HR Data Analysis
 ## Table of Contents
-- [Project Overview](project-overview)
-- [Data Sources](data-source)
+1. [Project Overview](#project-overview)
+2. [Data Sources](#data-sources)
+3. [Tools](#tools)
+4. [Data cleaning/Preparation](#data-cleaningpreparation)
+5. [Renaming Columns](#renaming-columns)
+6. [Standardizing Data](#standardizing-data)
+7. [Removing unnecessary columns](#removing-unnecessary-columns)
+8. [Removing nulls](#removing-nulls)
+9. [Removing Duplicates](#removing-duplicates)
+10. [Exploratory Data Analysis](#exploratory-data-analysis)
+11. [General Employee Information](#general-employee-information)
+    
+    - [ How many employees have we employed?](#how-many-employees-have-we-employed)
+    - [What is the gender distribution of employees?](#what-is-the-gender-distribution-of-employees-)
+    - [What are the different job roles and their counts based on gender?](#what-are-the-different-job-roles-and-their-counts-based-on-gender)
+    - [Which recruitment source do we hire the most employees from ?](#which-recruitment-source-do-we-hire-the-most-employees-from-)
+      
+12. [Salary and Compensation](#salary-and-Compensation)
+
+    - [ What is the average salary of employees per gender?](#what-is-the-average-salary-of-employees-per-gender)
+      
+    - [What is the distribution(Avg,Max,Min Salary)and our total expenditure of salaries among different departments,highlight the number of employees in each department before and after termination ?](#what-is-the-distributionavgmaxmin-salaryand-our-total-expenditure-of-salaries-among-different-departmentshighlight-the-number-of-employees-in-each-department-before-and-after-termination-)
+
+13. [Employee/Department Performance](#employeedepartment-performance)
+    -  [How many employees have received a performance score of above or equal to 4 and which deparment has the highest number of employee with the perfomance 
+score?](#how-many-employees-have-received-a-performance-score-of-above-or-equal-to-4-and-which-deparment-has-the-highest-number-of-employee-with-the-perfomance)
+    - [What is the average performance score for each department ?](#what-is-the-average-performance-score-for-each-department-)
+    - [Identify the most common reasons for termination](#identify-the-most-common-reasons-for-termination)
+
 
 ## Project Overview
 
@@ -10,7 +37,7 @@ The goal of this project is to perform an Exploratory Data Analysis (EDA) on an 
 #### Data Sources
 The HR dataset  obtained from Kaggle encompasses a comprehensive collection of employee-related data, capturing various aspects of the workforce within an organization. This dataset includes critical information pertaining to employee demographics, job roles, performance metrics and other HR-related attributes. The data is structured to provide a holistic view of the employees' profiles, enabling a thorough analysis of factors influencing employee behavior, performance and retention.
 
-Tools
+### Tools
 - Microsoft SQL Server
 
 #### Data cleaning/Preparation
@@ -148,7 +175,7 @@ FROM Hr_data;
 #### Findings
 We have a total number of 311 employees who we have employed over the years.
 
-#### What is the gender distribution of employees?
+#### What is the gender distribution of employees ?
 ```SQL
 /*
 The query is going to select the sex column of the employees, count all rows in the (as we have aliased it as total employees),
@@ -203,6 +230,9 @@ The on-line web application method has only yielded one employee, suggesting tha
 
 
 ### Salary and Compensation
+
+#### What is the average salary of employees per gender?
+
 ```sql
 /*
 In this query we are going to select Average salaries in terms of gender and format the salary into USD currency
@@ -221,6 +251,7 @@ ORDER BY 2 DESC;
 From the analysis, it is evident that our male employees receive a higher average salary of $70,629 compared to female employees, who have an average salary of $67,786. This indicates a gender pay disparity within our organization.The difference in average salaries between male and female employees highlights the presence of a gender pay gap. This disparity underscores the need to review our compensation policies to ensure they are equitable and fair.
 
 #### What is the distribution(Avg,Max,Min Salary)and our total expenditure of salaries among different departments,highlight the number of employees in each department before and after termination ?
+
 ![Expenditure sql](https://github.com/ezraonyinkwa/HR-Data-Analysis/assets/139281995/c476f2e9-76d6-449e-95db-df1a6f6428ca)
 
 ```sql
